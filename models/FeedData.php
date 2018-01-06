@@ -14,6 +14,7 @@ use Yii;
  * @property int $location_id
  * @property string $created
  * @property string $provider
+ * @property string $link
  *
  * @property Location $location
  */
@@ -33,10 +34,10 @@ class FeedData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'description', 'map', 'location_id', 'provider'], 'required'],
+            [['name', 'description', 'map', 'location_id', 'provider', 'link'], 'required'],
             [['location_id'], 'integer'],
             [['created'], 'safe'],
-            [['name', 'description', 'map', 'provider'], 'string', 'max' => 255],
+            [['name', 'description', 'map', 'provider', 'link'], 'string', 'max' => 255],
             [['location_id'], 'exist', 'skipOnError' => true, 'targetClass' => Location::className(), 'targetAttribute' => ['location_id' => 'id']],
         ];
     }
@@ -54,6 +55,7 @@ class FeedData extends \yii\db\ActiveRecord
             'location_id' => 'Location ID',
             'created' => 'Created',
             'provider' => 'Provider',
+            'link' => 'Link',
         ];
     }
 
