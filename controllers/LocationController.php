@@ -31,6 +31,12 @@ class LocationController extends ActiveController
         return $feed;
     }
 
+    public function actionLondonPretty(){
+        $feed = $this->getFeed();
+
+        return $this->render('index',['feed'=>$feed]);
+    }
+
     public function getFeed(){
         //call each feed
         $fourSquare = $this->getFourSquare();
